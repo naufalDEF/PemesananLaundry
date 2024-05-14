@@ -72,7 +72,7 @@
             </div>
 
             <div class="form-group">
-                <label for="tgl_join">Nomor HP:</label>
+                <label for="tgl_join">Tanggal Join:</label>
                 <input type="date" class="form-control" id="tgl_join" name="tgl_join" value="{{ old('tgl_join', $member->tgl_join) }}">
                 @error('tgl_join')
                 <div class="alert alert-danger mt-2">
