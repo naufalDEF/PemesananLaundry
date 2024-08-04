@@ -44,13 +44,12 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" name="password" value="{{ old('password', $member->password) }}">
-                @error('password')
-                <div class="alert alert-danger mt-2">
-                    {{ $message }}
-                </div>
-                @enderror
+                <label for="level">Email</label>
+                <select class="form-control" id="user_id" name="user_id">
+                    @foreach ($users as $data_user)
+                        <option value="{{$data_user->id}}">{{ $data_user->email }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="alamat">Alamat:</label>

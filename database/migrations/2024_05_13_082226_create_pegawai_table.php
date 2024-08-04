@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('pegawai', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('nama_pegawai', 150);
-            $table->string('password', 100);
             $table->text('alamat');
             $table->text('no_hp');
             $table->enum('jabatan', ['karyawan', 'supervisi', 'administrator']);

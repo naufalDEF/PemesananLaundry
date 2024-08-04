@@ -12,11 +12,20 @@ class Member extends Model
     protected $table = 'member';
     
     protected $fillable = [
+        'user_id',
         'no_identitas',
         'nama_member',
-        'password',
         'alamat',
         'no_hp',
         'tgl_join',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function datalaundryMembers()
+    {
+        return $this->hasMany(DatalaundryMember::class, 'member_id');
+    }
 }

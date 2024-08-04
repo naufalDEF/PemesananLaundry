@@ -24,7 +24,7 @@
         <form action="{{ route('pegawai.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="name">Nama:</label>
+                <label for="name">Nama</label>
                 <input type="text" class="form-control" id="name" name="nama_pegawai" required>
                 @error('nama_pegawai')
                 <div class="alert alert-danger mt-2">
@@ -33,16 +33,15 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-                @error('password')
-                <div class="alert alert-danger mt-2">
-                    {{ $message }}
-                </div>
-                @enderror
+                <label for="level">Email</label>
+                <select class="form-control" id="user_id" name="user_id">
+                    @foreach ($users as $data_user)
+                        <option value="{{$data_user->id}}">{{ $data_user->email }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
-                <label for="alamat">Alamat:</label>
+                <label for="alamat">Alamat</label>
                 <input type="text" class="form-control" id="alamat" name="alamat" required>
                 @error('alamat')
                 <div class="alert alert-danger mt-2">
@@ -51,7 +50,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="no_hp">Nomor HP:</label>
+                <label for="no_hp">Nomor HP</label>
                 <input type="text" class="form-control" id="no_hp" name="no_hp" required>
                 @error('no_hp')
                 <div class="alert alert-danger mt-2">
@@ -60,7 +59,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="jabatan">Jabatan:</label>
+                <label for="jabatan">Jabatan</label>
                 <select class="form-control" id="jabatan" name="jabatan">
                     <option value="karyawan">Karyawan</option>
                     <option value="supervisi">Supervisi</option>

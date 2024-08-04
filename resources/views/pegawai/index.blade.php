@@ -24,7 +24,13 @@
               <a class="nav-link" aria-current="page" href="{{route('home')}}">Beranda</a>
               <a class="nav-link active" href="{{route('pegawai.index')}}">Pegawai</a>
               <a class="nav-link" href="{{route('member.index')}}">Membership</a>
-              <a class="nav-link" href="{{route('barang.index')}}">Harga</a>
+              <a class="nav-link" href="{{route('barang.index')}}">Barang</a>
+              <a class="nav-link" href="{{route('users.index')}}">Pengguna</a>
+              <a class="nav-link" href="{{route('pembelianbarang.index')}}">Pembelian Barang</a>
+              <a class="nav-link" href="{{route('datalaundrymember.index')}}">Data Laundry Member</a>
+              <a class="nav-link" href="{{route('datalaundrynonmember.index')}}">Data Laundry Non-Member</a>
+
+
 
             </div>
           </div>
@@ -40,7 +46,7 @@
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama Pegawai</th>
-                    <th scope="col">Password</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Alamat</th>
                     <th scope="col">Nomor HP</th>
                     <th scope="col">Jabatan</th>
@@ -52,7 +58,7 @@
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
                         <td>{{ $pegawai->nama_pegawai }}</td>
-                        <td class="text-truncate" style="max-width: 150px;">{{ $pegawai->password }}</td>
+                        <td>{{ $pegawai->user->email }}</td>
                         <td class="text-truncate" style="max-width: 150px;">{{ $pegawai->alamat }}</td>
                         <td>{{ $pegawai->no_hp }}</td>
                         <td>{{ $pegawai->jabatan }}</td>

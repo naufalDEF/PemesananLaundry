@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Harga Pelayanan</title>
+    <title>Edit Harga Barang</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -21,12 +21,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>Data Harga Pelayanan</h1>
+        <h1>Data Harga Barang</h1>
         <form action="{{ route('barang.update', $barang->kode_barang) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="name">Nama Pelayanann:</label>
+                <label for="name">Nama Barang:</label>
                 <input type="text" class="form-control" id="name" name="nama_barang" value="{{ old('nama_barang', $barang->nama_barang) }}">
                 @error('nama_barang')
                 <div class="alert alert-danger mt-2">

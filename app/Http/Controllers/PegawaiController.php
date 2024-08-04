@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pegawai;
+use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -24,22 +25,22 @@ class PegawaiController extends Controller
 
     public function create(): View
     {
-        return view('pegawai.create');
+        $users = User::where('role','pegawai')->get();
+        return view('pegawai.create', compact('users'));
     }
 
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'nama_pegawai' => 'required|min:5',
-            'password' => 'required|min:5',
             'alamat' => 'required|min:5',
             'no_hp' => 'required|min:5',
             'jabatan' => 'required',
         ]);
 
         Pegawai::create([
+            'user_id'          => $request->user_id,
             'nama_pegawai' => $request->nama_pegawai,
-            'password' => md5($request->password),
             'alamat' => $request->alamat,
             'no_hp' => $request->no_hp,
             'jabatan' => $request->jabatan,
@@ -51,16 +52,16 @@ class PegawaiController extends Controller
     public function edit(string $id): View
     {
         $pegawai = Pegawai::findOrFail($id);
-
-        return view('pegawai.edit', compact('pegawai'));
+        $users = User::where('role', 'pegawai')->get();
+        return view('pegawai.edit', compact('pegawai', 'users'));
     }
+
 
     public function update(Request $request, $id): RedirectResponse
     {
         //validate form
         $request->validate([
             'nama_pegawai'  => 'required|min:5',
-            'password'      => 'required|min:5',
             'alamat'        => 'required|min:5',
             'no_hp'         => 'required|min:5',
             'jabatan'       => 'required'
@@ -68,8 +69,8 @@ class PegawaiController extends Controller
 
         $pegawai = Pegawai::findOrFail($id);
         $pegawai->update([
+                'user_id'          => $request->user_id,
                 'nama_pegawai'  => $request->nama_pegawai,
-                'password'  => md5($request->password),
                 'alamat'     => $request->alamat,
                 'no_hp'     => $request->no_hp,
                 'jabatan'     => $request->jabatan

@@ -27,10 +27,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Beranda</a>
-                    <a class="nav-link" href="{{ route('pegawai.index') }}">Pegawai</a>
-                    <a class="nav-link" href="{{ route('member.index') }}">Membership</a>
-                    <a class="nav-link" href="{{route('barang.index')}}">Harga</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('home')}}">Beranda</a>
+                    <a class="nav-link" href="{{route('pegawai.index')}}">Pegawai</a>
+                    <a class="nav-link" href="{{route('member.index')}}">Membership</a>
+                    <a class="nav-link" href="{{route('barang.index')}}">Barang</a>
+                    <a class="nav-link" href="{{route('users.index')}}">Pengguna</a>
+                    <a class="nav-link" href="{{route('pembelianbarang.index')}}">Pembelian Barang</a>
+                    <a class="nav-link" href="{{route('datalaundrymember.index')}}">Data Laundry Member</a>
+                    <a class="nav-link" href="{{route('datalaundrynonmember.index')}}">Data Laundry Non-Member</a>
+      
+      
                 </div>
             </div>
         </div>

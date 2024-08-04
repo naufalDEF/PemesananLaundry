@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Barang</title>
+    <title>Data Laundry Non Member</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -24,12 +24,14 @@
                 <a class="nav-link" aria-current="page" href="{{route('home')}}">Beranda</a>
                 <a class="nav-link" href="{{route('pegawai.index')}}">Pegawai</a>
                 <a class="nav-link" href="{{route('member.index')}}">Membership</a>
-                <a class="nav-link active" href="{{route('barang.index')}}">Barang</a>
+                <a class="nav-link" href="{{route('barang.index')}}">Barang</a>
                 <a class="nav-link" href="{{route('users.index')}}">Pengguna</a>
                 <a class="nav-link" href="{{route('pembelianbarang.index')}}">Pembelian Barang</a>
                 <a class="nav-link" href="{{route('datalaundrymember.index')}}">Data Laundry Member</a>
-                <a class="nav-link" href="{{route('datalaundrynonmember.index')}}">Data Laundry Non-Member</a>
+                <a class="nav-link active" href="{{route('datalaundrynonmember.index')}}">Data Laundry Non-Member</a>
   
+  
+
             </div>
           </div>
         </div>
@@ -37,39 +39,41 @@
     <br>
     <div class="container">
         
-        <h1 class="mb-4">Daftar Harga Barang</h1>
-        <a href="{{route('barang.create')}}" class="btn btn-primary">Tambah Barang</a><hr>
+        <h1 class="mb-4">Data Laundry Non Member</h1>
+        <a href="{{ route('datalaundrynonmember.create') }}" class="btn btn-primary mb-3">Tambah Data Laundry Non-Member</a>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Kode Barang</th>
-                    <th scope="col">Nama Barang</th>
-                    <th scope="col">Harga</th>
+                    <th scope="col">Tanggal Transaksi</th>
+                    <th scope="col">Nama Customer</th>
+                    <th scope="col">Nama Pegawai</th>
+                    <th scope="col">Status Laundry</th>
+                    <th scope="col">Status Pembayaran</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse($barang as $key => $barang)
-                    <tr>
-                        <th scope="row">{{ $barang->kode_barang }}</th>
-                        <td>{{ $barang->nama_barang }}</td>
-                        <td>{{ $barang->harga }}</td>
-                        <td> 
-                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('barang.destroy', $barang->kode_barang) }}" method="POST">
-                                <a href="{{ route('barang.edit', $barang->kode_barang) }}" class="btn btn-sm btn-warning">Update</a>
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @empty
-                        <div class="alert alert-danger">
-                            Data Pelayanan Belum Ada.
-                        </div>
-                @endforelse
+                @foreach($datalaundryNonMembers as $item)
+                <tr>
+                    <td>{{ $item->tgl_transaksi }}</td>
+                    <td>{{ $item->nama_customer }}</td>
+                    <td>{{ $item->pegawai->nama_pegawai }}</td>
+                    <td>{{ $item->status_laundry }}</td>
+                    <td>{{ $item->status_pembayaran }}</td>
+                    <td>
+                        <a href="{{ route('datalaundrynonmember.show', $item->id) }}" class="btn btn-sm btn-info">Detail</a>
+                        <a href="{{ route('datalaundrynonmember.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('datalaundrynonmember.destroy', $item->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin?')">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
+        {{ $datalaundryNonMembers->links() }}
     </div>
 </body>
 </html>

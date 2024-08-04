@@ -19,7 +19,6 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $pegawai->nama_pegawai }}</h5>
                 <p class="card-text">ID Pegawai: {{ $pegawai->id }}</p>
-                <p class="card-text">Password: {{ $pegawai->password }}</p>
                 <p class="card-text">Alamat: {{ $pegawai->alamat }}</p>
                 <p class="card-text">Jabatan: {{ $pegawai->jabatan }}</p>
             </div>

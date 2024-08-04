@@ -21,11 +21,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>Data Harga Pelayanan</h1>
+        <h1>Data Harga Barang</h1>
         <form action="{{ route('barang.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="name">Nama Pelayanan:</label>
+                <label for="name">Nama Barang:</label>
                 <input type="text" class="form-control" id="name" name="nama_barang" required>
                 @error('nama_barang')
                 <div class="alert alert-danger mt-2">

@@ -17,4 +17,14 @@ class PembelianBarang extends Model
         'tanggal',
         'jumlah',
     ];
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class, 'kode_barang');
+    }
+
+    public function pegawai()
+    {
+        return $this->belongsTo(Pegawai::class, 'id_pegawai');
+    }
 }

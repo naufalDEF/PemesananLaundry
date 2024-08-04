@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -43,5 +44,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function dataTambahanPegawai(){
+        return $this->hasOne(Pegawai::class, 'user_id');
+    }
+
+    public function dataTambahanMember(){
+        return $this->hasOne(Member::class, 'user_id')->orderby('no_identitas','asc');
     }
 }

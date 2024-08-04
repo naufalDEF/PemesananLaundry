@@ -20,4 +20,14 @@ class DataLaundryMember extends Model
         'status_pembayaran',
         'lokasi_kirim',
     ];
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class, 'member_id');
+    }
+
+    public function pegawai()
+    {
+        return $this->belongsTo(Pegawai::class, 'id_pegawai');
+    }
 }
